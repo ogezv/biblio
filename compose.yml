@@ -4,6 +4,8 @@ services:
   # service PHP
   php:
     build: './php_docker/'
+    env_file:
+      - .env
     volumes:
       - ./www/:/var/www/html
   
@@ -16,3 +18,27 @@ services:
       - '8080:80'
     volumes:
       - ./www/:/var/www/html
+
+  # service mariadb
+  mariadb:
+    image: mariadb:11.2
+    ports:
+      - '3307:3306'
+    env_file:
+      - .env
+    volumes:
+      - bibliodatabase:/var/lib/mysql
+
+  # service PhpMyAdmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - '8081:80'
+    environment:
+      - PMA_HOST=mariadb
+    depends_on:
+      - mariadb
+
+# volume nommé bibliodatabase géré par docker engine
+volumes:
+  bibliodatabase:
