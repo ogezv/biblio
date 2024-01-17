@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 
 require_once "Livre.class.php";
 require_once "LivreManager.class.php";

@@ -1,6 +1,7 @@
+<?php session_start(); ?>
 <?php ob_start() ?>
 
-<h1>A propos de moi</h1>
+<h1>A propos ma</h1>
 
 <?php
 $titre="A propos";

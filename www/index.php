@@ -13,6 +13,12 @@ if (empty($_GET['page'])) {
         case 'a-propos':
             require "views/a-propos.view.php"; // Appel de la vue a propos
             break;
+        case 'connexion':
+            require "views/connexion.view.php"; // Appel de la vue a propos
+            break;
+        case 'profil':
+            require "views/profil.view.php"; // Appel de la vue a propos
+            break;
         default:
             require "views/error.view.php";
             break;

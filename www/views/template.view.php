@@ -27,8 +27,18 @@
                     <li class="nav-item">
                         <a class="nav-link fw-bold" href="a-propos">A propos</a>
                     </li>
+                    <?php if (!empty($_SESSION)) : ?>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold" href="livres">Livres</a>
+                        </li>
+                    <?php endif ?>
+
                     <li class="nav-item">
-                        <a class="nav-link fw-bold" href="livres">Livres</a>
+                        <?php if (empty($_SESSION)) : ?>
+                            <a class="nav-link fw-bold" href="connexion">Connexion</a>
+                        <?php else : ?>
+                            <a class="nav-link fw-bold" href="deconnexion">Déconnexion</a>
+                        <?php endif ?>
                     </li>
                 </ul>
             </div>
@@ -39,7 +49,7 @@
         <h1 class="rounded border border-dark p-2 m-2 text-center bg-primary"><?= $titre ?></h1>
         <?= $content ?>
     </div>
-
+                   
     <!-- javascript bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
