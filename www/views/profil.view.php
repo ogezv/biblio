@@ -1,9 +1,10 @@
-<?php session_start();
+<?php 
+// session_start();
 require_once "User.class.php";
 require_once "UserManager.class.php";
 
 $userManager=new UserManager;
-$userManager->chargementUser();
+$userManager->setUser();
 
 
 
@@ -11,7 +12,7 @@ $userManager->chargementUser();
 
 <?php ob_start() ?>
 
-<?php foreach ($userManager->getusers() as $user) : ?>
+<?php foreach ($userManager->getUser() as $user) : ?>
     <?php echo $user->getidentifiant(); ?>
 <?php endforeach ?>
 

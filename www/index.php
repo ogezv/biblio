@@ -1,5 +1,8 @@
 <?php
-
+session_start();
+require_once "UserManager.class.php";
+$userManager=new UserManager;
+// routeur
 if (empty($_GET['page'])) {
     require "views/accueil.view.php";
 } else {
@@ -15,6 +18,9 @@ if (empty($_GET['page'])) {
             break;
         case 'connexion':
             require "views/connexion.view.php"; // Appel de la vue a propos
+            break;
+        case 'deconnexion':
+            $userManager->deconnexion();
             break;
         case 'profil':
             require "views/profil.view.php"; // Appel de la vue a propos

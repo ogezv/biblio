@@ -4,25 +4,17 @@ require_once "UserManager.class.php";
 
 class LoginManager extends UserManager
 {
-    public function connexionUser($identifiant, $password)
+    private function initSessionUser()
     {
-        $this->chargementUser();
-        $users = $this-> users;
-        foreach ($users as $user) {
-            if ($user->getIdentifiant() === $identifiant && password_verify($password, $user->getPassword())) {
-                $this->initSessionUser($user);
+        $userManager = new UserManager;
+        if (isset($_POST['identifiant'])) {
+            $userManager->setUser($_POST['identifiant'], $_POST['password']);
+            $userEnCours = $userManager->getUser();
+            if ($userEnCours != null) {
+                foreach ($userEnCours as $attribut => $valeur) {
+                    $_SESSION[$attribut] = $valeur;
+                }
             }
         }
-        // header('location: accueil');
-    }
-
-    private function initSessionUser(object $user)
-    {
-        $_SESSION['user'] = [
-            'id_user' => $user->getId(),
-            'identifiant' => $user->getIdentifiant(),
-            'password' => $user->getPassword(),
-            'is_valide' => $user->getIsValide()
-        ];
     }
 }

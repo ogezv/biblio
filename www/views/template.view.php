@@ -27,17 +27,16 @@
                     <li class="nav-item">
                         <a class="nav-link fw-bold" href="a-propos">A propos</a>
                     </li>
-                    <?php if (!empty($_SESSION)) : ?>
+                    <?php if (!empty($_SESSION['user'])) : ?>
                         <li class="nav-item">
                             <a class="nav-link fw-bold" href="livres">Livres</a>
                         </li>
                     <?php endif ?>
-
                     <li class="nav-item">
-                        <?php if (empty($_SESSION)) : ?>
-                            <a class="nav-link fw-bold" href="connexion">Connexion</a>
+                        <?php if (empty($_SESSION['user'])) : ?>
+                            <a class="nav-link fw-bold" href="connexion">Se connecter</a>
                         <?php else : ?>
-                            <a class="nav-link fw-bold" href="deconnexion">Déconnexion</a>
+                            <a class="nav-link fw-bold" href="deconnexion">Se déconnecter</a>
                         <?php endif ?>
                     </li>
                 </ul>

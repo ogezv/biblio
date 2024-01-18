@@ -1,19 +1,17 @@
 <?php
 class User
 {
-    private int $id;
-    private string $identifiant;
+    public int $id;
+    public string $identifiant;
     private string $password;
-    private bool $isValide;
-    // public static array $livres; //tableau de livres
+    public bool $isValide;
 
-    public function __construct(int $id, string $identifiant,string $password, bool $isValide)
+    public function __construct(int $id, string $identifiant,string $password)
     {
         $this->id = $id;
         $this->identifiant = $identifiant;
         $this->password = $password;
-        $this->isValide = $isValide;
-        // self::$livres[]=$this;
+        $this->isValide = false;
     }
     public function getId(): int {
         return $this->id;

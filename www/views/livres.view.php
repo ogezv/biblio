@@ -1,10 +1,16 @@
-<?php session_start();
+<?php
+// session_start();
+
 
 require_once "Livre.class.php";
 require_once "LivreManager.class.php";
 
+if (!isset($_SESSION['user'])) {
+    header('location: connexion');
+}
+
 $livreManager = new LivreManager;
-$livreManager->chargementLivres();
+$livreManager->chargementLivres($_SESSION['user']['id']);
 
 
 ?>
@@ -34,5 +40,7 @@ $livreManager->chargementLivres();
 <?php
 // buffer restitué
 $content = ob_get_clean();
-$titre = "Mes livres";
+$titre = 'Livres de ' . $_SESSION['user']['identifiant'];
+
 require_once "template.view.php";
+echo $_SESSION['user']['id'];

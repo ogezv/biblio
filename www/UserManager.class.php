@@ -2,31 +2,36 @@
 require_once "ConnexionManager.class.php";
 require_once "User.class.php";
 
-class UserManager extends ConnexionManager {
+class UserManager extends ConnexionManager
+{
 
-    protected array $users;
-    
-    public function ajouterUtilisateur($nouveauUser){
-        $this->users[] = $nouveauUser;
-    }
+    protected User $user;
 
-    public function chargementUser(){
+    public function setUser($identifiant, $password)
+    {
         $connexion = $this->getConnexionBdd();
-        $req = $connexion->prepare("SELECT * FROM user limit 0,5");
+        $req = $connexion->prepare("SELECT * FROM user");
         $req->execute();
-        $usersConnexion = $req->fetchALL(PDO::FETCH_ASSOC);
+        $users = $req->fetchALL(PDO::FETCH_ASSOC);
         $req->closeCursor();
 
-        foreach($usersConnexion as $user){
-            $nouveauUser = new User($user['id_user'], $user['identifiant'],$user['password'],$user['is_valide']);
-            $this->ajouterUtilisateur($nouveauUser);
-           
+        foreach ($users as $user) {
+            if ($user['identifiant'] === $identifiant) {
+                if (password_verify($password, $user['password'])) {
+                    $user = new User($user['id_user'], $user['identifiant'], $user['password']);
+                    return $this->user=$user;
+                }
+            }
         }
     }
 
+    public function deconnexion(){
+        session_destroy();
+        header ('location: /');
+    }
 
-    public function getusers(): array {
-        return $this->users;
+    public function getUser(): User
+    {
+        return $this->user;
     }
 }
-?> 
