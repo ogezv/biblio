@@ -6,7 +6,7 @@
         <div class="card my-3 mx-auto w-25" style="min-width: 350px;">
             <h3 class="card-header"><?= $livre->getTitre() ?></h3>
             <div class="card-body">
-                <h4 class="card-title">Auteur : Christophe</h5>
+                <h4 class="card-title">Auteur : </h5>
             </div>
             <img class="mx-auto" style="height: auto; width: 200px;" src="public/images/<?= $livre->getImage(); ?>">
             <div class=" card-body">

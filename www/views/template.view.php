@@ -25,18 +25,18 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fw-bold" href="a-propos">A propos</a>
+                        <a class="nav-link fw-bold" href="<?= SITE_URL ?>a-propos">A propos</a>
                     </li>
                     <?php if (!empty($_SESSION['user'])) : ?>
                         <li class="nav-item">
-                            <a class="nav-link fw-bold" href="livres">Livres</a>
+                            <a class="nav-link fw-bold" href="<?= SITE_URL ?>livres">Livres</a>
                         </li>
                     <?php endif ?>
                     <li class="nav-item">
                         <?php if (empty($_SESSION['user'])) : ?>
-                            <a class="nav-link fw-bold" href="connexion">Se connecter</a>
+                            <a class="nav-link fw-bold" href="<?= SITE_URL ?>connexion">Se connecter</a>
                         <?php else : ?>
-                            <a class="nav-link fw-bold" href="deconnexion">Se déconnecter</a>
+                            <a class="nav-link fw-bold" href="<?= SITE_URL ?>deconnexion">Se déconnecter</a>
                         <?php endif ?>
                     </li>
                 </ul>
@@ -48,7 +48,7 @@
         <h1 class="rounded border border-dark p-2 m-2 text-center bg-primary"><?= $titre ?></h1>
         <?= $content ?>
     </div>
-                   
+
     <!-- javascript bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

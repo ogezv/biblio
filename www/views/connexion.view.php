@@ -1,6 +1,5 @@
 <?php
-require_once "LoginManager.class.php";
-require_once "UserManager.class.php";
+require_once "models/UserManager.class.php";
 $userManager = new UserManager;
 
 if (isset($_SESSION['user'])) {

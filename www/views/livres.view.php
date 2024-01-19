@@ -1,20 +1,3 @@
-<?php
-// session_start();
-
-
-require_once "Livre.class.php";
-require_once "LivreManager.class.php";
-
-if (!isset($_SESSION['user'])) {
-    header('location: connexion');
-}
-
-$livreManager = new LivreManager;
-$livreManager->chargementLivres($_SESSION['user']['id']);
-
-
-?>
-
 <?php ob_start() //buffer démarré 
 ?>
 
@@ -25,7 +8,7 @@ $livreManager->chargementLivres($_SESSION['user']['id']);
         <th>Nombre de pages</th>
         <th colspan="2">Actions</th>
     </tr>
-    <?php foreach ($livreManager->getLivres() as $livre) : ?>
+    <?php foreach ($livresEnCours as $livre) : ?>
         <tr>
             <td class="align-middle"><img src="public/images/<?php echo $livre->getImage(); ?>" height="100px" alt="Livre apprentissage du CSS"></td>
             <td class="align-middle"><?php echo $livre->getTitre(); ?></td>
@@ -43,4 +26,4 @@ $content = ob_get_clean();
 $titre = 'Livres de ' . $_SESSION['user']['identifiant'];
 
 require_once "template.view.php";
-echo $_SESSION['user']['id'];
+// echo $_SESSION['user']['id'];
