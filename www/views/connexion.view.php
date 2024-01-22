@@ -1,21 +1,17 @@
 <?php
 require_once "models/UserManager.class.php";
+require_once "controllers/UsersController.controller.php";
 $userManager = new UserManager;
+$usersController = new UsersController;
+if (isset($_POST['identifiant'])) {
+    $usersController->connexionUser($_POST['identifiant'],$_POST['password']);
+}
+
 
 if (isset($_SESSION['user'])) {
     header('location: livres');
 }
 
-if (isset($_POST['identifiant'])) {
-    $userManager->setUser($_POST['identifiant'], $_POST['password']);
-    $userEnCours = $userManager->getUser();
-    if ($userEnCours != null) {
-        foreach ($userEnCours as $attribut => $valeur) {
-            $_SESSION['user'][$attribut] = $valeur;
-        }
-        header('location: livres');
-    }
-}
 ?>
 
 <?php ob_start() ?>

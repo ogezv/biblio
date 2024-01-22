@@ -1,5 +1,5 @@
 <?php ob_start() ?>
-<?php if ($pasDeLivre === false) : ?>
+<!-- <?php if ($pasDeLivre === false) : ?> -->
 
     <?php
     foreach ($livresTab as $livre) : ?>

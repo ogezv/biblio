@@ -1,3 +1,7 @@
+<?php
+if (!isset($_SESSION['user'])) header("location: connexion");
+?>
+
 <?php ob_start() //buffer démarré 
 ?>
 
@@ -10,8 +14,8 @@
     </tr>
     <?php foreach ($livresEnCours as $livre) : ?>
         <tr>
-            <td class="align-middle"><img src="public/images/<?php echo $livre->getImage(); ?>" height="100px" alt="Livre apprentissage du CSS"></td>
-            <td class="align-middle"><?php echo $livre->getTitre(); ?></td>
+            <td class="align-middle"><img src="public/images/<?= $livre->getImage() ?>" height="100px" alt="Livre pour <?php echo $livre->getTitre(); ?>"></td>
+            <td class="align-middle"><a href="<?= SITE_URL?>livres/l/<?= $livre->getId()?>"><?php echo $livre->getTitre(); ?></a></td>
             <td class="align-middle"><?php echo $livre->getNombrePages(); ?></td>
             <td class="align-middle"><a href="#" class="btn btn-warning">Modifier</a></td>
             <td class="align-middle"><a href="#" class="btn btn-danger">Supprimer</a></td>
