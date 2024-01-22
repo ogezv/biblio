@@ -12,13 +12,13 @@ class LivresController
         if (isset($_SESSION['user'])) {
             $id_user = $_SESSION['user']['id'];
             $this->livresManager->chargementLivres($id_user);
-        } 
+        }
     }
 
     public function afficherLivres()
     {
-        // $livreEnCours = $this->livresManager;
         $livresEnCours = $this->livresManager->getLivres();
+
         require "views/livres.view.php";
     }
 
@@ -26,5 +26,16 @@ class LivresController
     {
         $livreEnCours = $this->livresManager->getLivreById($id_livre);
         require ($livreEnCours != null) ? "views/afficherLivre.view.php" : "views/error.view.php";
+    }
+
+    public function afficherLivresAccueil()
+    {
+        $pasDeLivre = false;
+        $this->livresManager->chargementLivresAccueil();
+        $livresTab= $this->livresManager->getLivres();
+        if (count($livresTab) === 0) {
+            $pasDeLivre = true;
+        }
+        require "views/accueil.view.php";
     }
 }

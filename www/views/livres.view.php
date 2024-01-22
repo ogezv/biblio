@@ -4,24 +4,27 @@ if (!isset($_SESSION['user'])) header("location: connexion");
 
 <?php ob_start() //buffer démarré 
 ?>
-
-<table class="table table-center">
-    <tr class="table-dark">
-        <th>Image</th>
-        <th>Titre</th>
-        <th>Nombre de pages</th>
-        <th colspan="2">Actions</th>
-    </tr>
+<div class="d-flex justify-content-evenly flex-wrap">
     <?php foreach ($livresEnCours as $livre) : ?>
-        <tr>
-            <td class="align-middle"><img src="public/images/<?= $livre->getImage() ?>" height="100px" alt="Livre pour <?php echo $livre->getTitre(); ?>"></td>
-            <td class="align-middle"><a href="<?= SITE_URL?>livres/l/<?= $livre->getId()?>"><?php echo $livre->getTitre(); ?></a></td>
-            <td class="align-middle"><?php echo $livre->getNombrePages(); ?></td>
-            <td class="align-middle"><a href="#" class="btn btn-warning">Modifier</a></td>
-            <td class="align-middle"><a href="#" class="btn btn-danger">Supprimer</a></td>
-        </tr>
+        <div class="card my-3 mx-auto w-25" style="min-width: 400px;">
+            <h3 class="card mb-3 align-items-center"><a class="text-white card-header" href="<?= SITE_URL ?>livres/l/<?php echo $livre->getId(); ?>"><?php echo $livre->getTitre(); ?></a></h3>
+            <img src="public/images/<?= $livre->getImage() ?>" height="100px" alt="Livre pour <?php echo $livre->getTitre(); ?>">
+            <div class=" card-body">
+                <div class="card-body">
+                    
+                </div>
+                <div class="card-footer text-muted">
+                    <p class="card-text">Auteur</p>
+                    Nombre de pages : <?= $livre->getNombrePages(); ?>
+                    <p class="card-text d-flex justify-content-evenly pt-3">
+                        <a href="#" class="btn btn-danger">Supprimer</a>
+                        <a href="#" class="btn btn-warning">Modifier</a>
+                    </p>
+                </div>
+            </div>
+        </div>
     <?php endforeach ?>
-</table>
+</div>
 <a href="#" class="btn btn-success d-block">Ajouter</a>
 
 <?php

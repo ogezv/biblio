@@ -33,6 +33,19 @@ class LivreManager extends ConnexionManager
         }
     }
 
+    public function chargementLivresAccueil()
+    {
+        $connexion = $this->getConnexionBdd();
+        $req = $connexion->prepare("SELECT * FROM livre");
+        $req->execute();
+        $livreImportes = $req->fetchALL(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+        foreach ($livreImportes as $livre) {
+            $nouveauLivre = new Livre($livre['id_livre'], $livre['titre'], $livre['image'], $livre['nb_pages']);
+            $this->ajouterLivre($nouveauLivre);
+        }
+    }
+
     /**
      * Get the value of livres
      *

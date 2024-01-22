@@ -11,13 +11,13 @@ $userController = new UsersController;
 // routeur
 try {
     if (empty($_GET['page'])) {
-        require "views/accueil.view.php";
+        $livreController->afficherLivresAccueil();
     } else {
         // $url = explode("/", filter_var($_GET['page']), FILTER_SANITIZE_URL);
         $url = explode("/", filter_var($_GET['page'], FILTER_SANITIZE_URL));
         switch ($url[0]) {
             case 'accueil':
-                require "views/accueil.view.php"; // Appel de la vue accueil
+                $livreController->afficherLivresAccueil(); // Appel de la vue accueil
                 break;
             case 'livres':
                 if (empty($url[1])) {
