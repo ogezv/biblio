@@ -6,14 +6,16 @@ class Livre
     private string $titre;
     private string $image;
     private int $nombrePages;
+    private string $uploader;
     // public static array $livres;
 
-    public function __construct(int $id, string $titre, string $image, int $nombrePages)
+    public function __construct(int $id, string $titre, string $image, int $nombrePages, string $uploader = "")
     {
         $this->id = $id;
         $this->titre = $titre;
         $this->image = $image;
         $this->nombrePages = $nombrePages;
+        $this->uploader = $uploader;
     }
 
     /**
@@ -21,7 +23,8 @@ class Livre
      *
      * @return int
      */
-    public function getId(): int {
+    public function getId(): int
+    {
         return $this->id;
     }
 
@@ -32,7 +35,8 @@ class Livre
      *
      * @return self
      */
-    public function setId(int $id): self {
+    public function setId(int $id): self
+    {
         $this->id = $id;
         return $this;
     }
@@ -42,7 +46,8 @@ class Livre
      *
      * @return string
      */
-    public function getTitre(): string {
+    public function getTitre(): string
+    {
         return $this->titre;
     }
 
@@ -53,7 +58,8 @@ class Livre
      *
      * @return self
      */
-    public function setTitre(string $titre): self {
+    public function setTitre(string $titre): self
+    {
         $this->titre = $titre;
         return $this;
     }
@@ -63,7 +69,8 @@ class Livre
      *
      * @return string
      */
-    public function getImage(): string {
+    public function getImage(): string
+    {
         return $this->image;
     }
 
@@ -74,7 +81,8 @@ class Livre
      *
      * @return self
      */
-    public function setImage(string $image): self {
+    public function setImage(string $image): self
+    {
         $this->image = $image;
         return $this;
     }
@@ -84,7 +92,8 @@ class Livre
      *
      * @return int
      */
-    public function getNombrePages(): int {
+    public function getNombrePages(): int
+    {
         return $this->nombrePages;
     }
 
@@ -95,8 +104,18 @@ class Livre
      *
      * @return self
      */
-    public function setNombrePages(int $nombrePages): self {
+    public function setNombrePages(int $nombrePages): self
+    {
         $this->nombrePages = $nombrePages;
         return $this;
+    }
+
+    /**
+     * Get the value of uploader
+     *
+     * @return string
+     */
+    public function getUploader(): string {
+        return $this->uploader;
     }
 }

@@ -11,26 +11,25 @@ if (!isset($_SESSION['user'])) header("location: connexion");
             <img src="public/images/<?= $livre->getImage() ?>" height="100px" alt="Livre pour <?php echo $livre->getTitre(); ?>">
             <div class=" card-body">
                 <div class="card-body">
-                    
+
                 </div>
                 <div class="card-footer text-muted">
-                    <p class="card-text">Auteur</p>
                     Nombre de pages : <?= $livre->getNombrePages(); ?>
                     <p class="card-text d-flex justify-content-evenly pt-3">
-                        <a href="#" class="btn btn-danger">Supprimer</a>
-                        <a href="#" class="btn btn-warning">Modifier</a>
+                        <a href="<?= SITE_URL ?>livres/s" class="btn btn-danger">Supprimer</a>
+                        <a href="<?= SITE_URL ?>livres/m" class="btn btn-warning">Modifier</a>
                     </p>
                 </div>
             </div>
         </div>
     <?php endforeach ?>
 </div>
-<a href="#" class="btn btn-success d-block">Ajouter</a>
+<a href="<?= SITE_URL ?>livres/a" class="btn btn-success d-block">Ajouter</a>
 
 <?php
 // buffer restitué
 $content = ob_get_clean();
 $titre = 'Livres de ' . $_SESSION['user']['identifiant'];
 
-require_once "template.view.php";
+require_once "views/templates/template.view.php";
 // echo $_SESSION['user']['id'];

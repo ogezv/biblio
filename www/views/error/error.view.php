@@ -6,4 +6,4 @@
 <?php
 $titre="Error";
 $content= ob_get_clean();
-require_once "template.view.php";
+require_once "views/templates/template.view.php";

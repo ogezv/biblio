@@ -2,19 +2,19 @@
 <?php if ($pasDeLivre === false) : ?>
 
     <?php
-    foreach ($livresTab as $livre) : ?>
+    foreach ($livresAll as $livre) : ?>
         <div class="card my-3 mx-auto w-25" style="min-width: 350px;">
             <h3 class="card-header"><?= $livre->getTitre() ?></h3>
             <div class="card-body">
-                <h4 class="card-title">Auteur : </h5>
+                <img class="mx-auto" style="height: auto; width: 200px;" src="public/images/<?= $livre->getImage() ?>">
             </div>
-            <img class="mx-auto" style="height: auto; width: 200px;" src="public/images/<?= $livre->getImage(); ?>">
             <div class=" card-body">
                 <div class="card-body">
+                    <h5 class="card-title">Auteur : <?= $livre->getUploader() ?></h5>
                     <a href="#" class="card-link">En savoir plus...</a>
                 </div>
                 <div class="card-footer text-muted">
-                    date de parution : 21/10/2024
+                Nombre de pages : <?= $livre->getNombrePages() ?>
                 </div>
             </div>
         </div>
@@ -37,4 +37,4 @@
 <?php
 $titre = "Tous vos livres";
 $content = ob_get_clean();
-require "template.view.php";
+require "views/templates/template.view.php";

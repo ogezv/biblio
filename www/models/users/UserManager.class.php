@@ -1,6 +1,6 @@
 <?php
-require_once "models/ConnexionManager.class.php";
-require_once "models/User.class.php";
+require_once "models/utils/ConnexionManager.class.php";
+require_once "models/users/User.class.php";
 
 class UserManager extends ConnexionManager
 {

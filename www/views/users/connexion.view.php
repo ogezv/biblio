@@ -1,6 +1,6 @@
 <?php
-require_once "models/UserManager.class.php";
-require_once "controllers/UsersController.controller.php";
+require_once "models/users/UserManager.class.php";
+require_once "controllers/users/UsersController.controller.php";
 $userManager = new UserManager;
 $usersController = new UsersController;
 if (isset($_POST['identifiant'])) {
@@ -30,4 +30,4 @@ if (isset($_SESSION['user'])) {
 <?php
 $content = ob_get_clean();
 $titre = "Connexion";
-require_once "template.view.php";
+require_once "views/templates/template.view.php";

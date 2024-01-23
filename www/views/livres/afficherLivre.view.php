@@ -21,4 +21,4 @@
 $content = ob_get_clean();
 $titre = $livreEnCours->getTitre();
 
-require_once "template.view.php";
+require_once "views/templates/template.view.php";

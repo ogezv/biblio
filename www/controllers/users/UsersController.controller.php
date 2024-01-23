@@ -1,5 +1,5 @@
 <?php
-require_once "models/UserManager.class.php";
+require_once "models/users/UserManager.class.php";
 
 class UsersController
 {
@@ -12,7 +12,7 @@ class UsersController
 
     public function connexion()
     {
-        require "views/connexion.view.php";
+        require "views/users/connexion.view.php";
     }
 
     public function connexionUser($identifiant, $password)
