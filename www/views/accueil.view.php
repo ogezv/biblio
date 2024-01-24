@@ -11,10 +11,10 @@
             <div class=" card-body">
                 <div class="card-body">
                     <h5 class="card-title">Auteur : <?= $livre->getUploader() ?></h5>
-                    <a href="#" class="card-link">En savoir plus...</a>
+                    <p class="card-text"><?= $livre->getResume() ?></p>
                 </div>
                 <div class="card-footer text-muted">
-                Nombre de pages : <?= $livre->getNombrePages() ?>
+                    Nombre de pages : <?= $livre->getNombrePages() ?>
                 </div>
             </div>
         </div>

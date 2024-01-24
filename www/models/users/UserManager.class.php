@@ -18,7 +18,7 @@ class UserManager extends ConnexionManager
         foreach ($users as $user) {
             if ($user['identifiant'] === $identifiant) {
                 if (password_verify($password, $user['password'])) {
-                    $user = new User($user['id_user'], $user['identifiant'], $user['password']);
+                    $user = new User($user['id_user'], $user['identifiant'], $user['password'], $user['mail']);
                     return $this->user=$user;
                 }
             }

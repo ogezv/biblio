@@ -37,7 +37,7 @@ try {
                 }
                 break;
             case 'a-propos':
-                require "views/users/a-propos.view.php"; // Appel de la vue a propos
+                $userController->aPropos(); // Appel de la vue a propos
                 break;
             case 'connexion':
                 $userController->connexion(); // Appel de la vue a propos

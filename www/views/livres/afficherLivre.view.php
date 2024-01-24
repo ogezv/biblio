@@ -5,7 +5,7 @@
   <h3 class="card-header"<?= $livreEnCours->getTitre() ?>></h3>
   <img src="<?= SITE_URL?>public/images/<?= $livreEnCours->getImage() ?>" alt="<?= $livreEnCours->getTitre()?>">
   <div class="card-body">
-    <p class="card-text">Livre pour <?= $livreEnCours->getTitre()?></p>
+    <p class="card-text"><?= $livreEnCours->getResume()?></p>
   </div>
   <div class="card-body">
     <a href="#" class="card-link">Card link</a>

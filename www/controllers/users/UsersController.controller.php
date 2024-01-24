@@ -26,4 +26,9 @@ class UsersController
             header('location: livres');
         }
     }
+
+    public function aPropos()
+    {
+        require "views/users/a-propos.view.php";
+    }
 }

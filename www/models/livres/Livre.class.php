@@ -6,15 +6,17 @@ class Livre
     private string $titre;
     private string $image;
     private int $nombrePages;
+    private string $resume;
     private string $uploader;
     // public static array $livres;
 
-    public function __construct(int $id, string $titre, string $image, int $nombrePages, string $uploader = "")
+    public function __construct(int $id, string $titre, string $image, int $nombrePages, string $resume, string $uploader = "")
     {
         $this->id = $id;
         $this->titre = $titre;
         $this->image = $image;
         $this->nombrePages = $nombrePages;
+        $this->resume = $resume;
         $this->uploader = $uploader;
     }
 
@@ -115,7 +117,17 @@ class Livre
      *
      * @return string
      */
-    public function getUploader(): string {
+    public function getUploader(): string
+    {
         return $this->uploader;
+    }
+
+    /**
+     * Get the value of resume
+     *
+     * @return string
+     */
+    public function getResume(): string {
+        return $this->resume;
     }
 }

@@ -11,7 +11,7 @@ if (!isset($_SESSION['user'])) header("location: connexion");
             <img src="public/images/<?= $livre->getImage() ?>" height="100px" alt="Livre pour <?php echo $livre->getTitre(); ?>">
             <div class=" card-body">
                 <div class="card-body">
-
+                    <p class="card-text"><?= $livre->getResume()?></p>
                 </div>
                 <div class="card-footer text-muted">
                     Nombre de pages : <?= $livre->getNombrePages(); ?>

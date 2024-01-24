@@ -20,7 +20,7 @@ class LivreManager extends ConnexionManager
         $livreImportes = $req->fetchALL(PDO::FETCH_ASSOC);
         $req->closeCursor();
         foreach ($livreImportes as $livre) {
-            $nouveauLivre = new Livre($livre['id_livre'], $livre['titre'], $livre['image'], $livre['nb_pages']);
+            $nouveauLivre = new Livre($livre['id_livre'], $livre['titre'], $livre['image'], $livre['nb_pages'], $livre['resume']);
             $this->ajouterLivre($nouveauLivre);
         }
     }
@@ -34,7 +34,7 @@ class LivreManager extends ConnexionManager
         $livreImportes = $req->fetchALL(PDO::FETCH_ASSOC);
         $req->closeCursor();
         foreach ($livreImportes as $livre) {
-            $nouveauLivre = new Livre($livre['id_livre'], $livre['titre'], $livre['image'], $livre['nb_pages'], $livre['identifiant'] != null ? $livre['identifiant'] : "Pas d'uploader");
+            $nouveauLivre = new Livre($livre['id_livre'], $livre['titre'], $livre['image'], $livre['nb_pages'], $livre['resume'], $livre['identifiant'] != null ? $livre['identifiant'] : "Pas d'uploader");
             $this->ajouterLivre($nouveauLivre);
         }
     }
