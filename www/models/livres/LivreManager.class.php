@@ -48,19 +48,55 @@ class LivreManager extends ConnexionManager
         }
     }
 
-    public function ajoutLivreBdd($titre, $nbPages, $monImage, $id_user)
+    public function ajoutLivreBdd($titre, $nbPages, $monImage,  $resume, $id_user)
     {
-        $req = "INSERT INTO livre (titre, nb_pages, image, id_user)
-        VALUES(:titre, :nbPages, :monImage, :id_user)";
+        $req = "INSERT INTO livre (titre, nb_pages, image, resume, id_user)
+        VALUES(:titre, :nbPages, :monImage, :resume,:id_user)";
         $stmt = $this->getConnexionBdd()->prepare($req);
         $stmt->bindValue(":titre", $titre, PDO::PARAM_STR);
         $stmt->bindValue(":nbPages", $nbPages, PDO::PARAM_INT);
         $stmt->bindValue(":monImage", $monImage, PDO::PARAM_STR);
+        $stmt->bindValue(":resume", $resume, PDO::PARAM_STR);
         $stmt->bindValue(":id_user", $id_user, PDO::PARAM_INT);
+
+        $resultat = $stmt->execute();
+        $stmt->closeCursor();
+
+        if ($resultat > 0) {
+            $livre = new Livre($this->getConnexionBdd()->lastInsertId(), $titre, $monImage, $nbPages, $resume, $_SESSION['user']['identifiant']);
+        }
+    }
+
+    public function supprimerLivreBdd($id_livre)
+    {
+        $req = "DELETE FROM livre WHERE id_livre= :id_livre";
+        $stmt = $this->getConnexionBdd()->prepare($req);
+        $stmt->bindValue(":id_livre", $id_livre, PDO::PARAM_INT);
         $resultat = $stmt->execute();
         $stmt->closeCursor();
     }
 
+    public function modifierLivreBdd($id_livre, $titre, $nbPages, $monImage, $resume, $id_user)
+    {
+        $req = "UPDATE livre set titre=:titre, nb_pages=:nbPages, image=:image, resume=:resume, id_user=:id_user WHERE id_livre= :id_livre";
+        $stmt = $this->getConnexionBdd()->prepare($req);
+        $stmt->bindValue(":titre", $titre, PDO::PARAM_STR);
+        $stmt->bindValue(":nbPages", $nbPages, PDO::PARAM_INT);
+        $stmt->bindValue(":image", $monImage, PDO::PARAM_STR);
+        $stmt->bindValue(":resume", $resume, PDO::PARAM_STR);
+        $stmt->bindValue(":id_user", $id_user, PDO::PARAM_INT);
+        $stmt->bindValue(":id_livre", $id_livre, PDO::PARAM_INT);
+        $resultat = $stmt->execute();
+        $stmt->closeCursor();
+
+        if ($resultat > 0) {
+            $this->getLivreById($id_livre)->setTitre($titre);
+            $this->getLivreById($id_livre)->setNbPages($nbPages);
+            $this->getLivreById($id_livre)->setImage($monImage);
+            $this->getLivreById($id_livre)->setResume($resume);
+            $this->getLivreById($id_livre)->setUploader($_SESSION['user']['identifiant']);
+        }
+    }
 
 
     /**

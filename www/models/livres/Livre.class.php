@@ -5,17 +5,17 @@ class Livre
     private int $id;
     private string $titre;
     private string $image;
-    private int $nombrePages;
+    private int $nbPages;
     private string $resume;
     private string $uploader;
     // public static array $livres;
 
-    public function __construct(int $id, string $titre, string $image, int $nombrePages, string $resume, string $uploader = "")
+    public function __construct(int $id, string $titre, string $image, int $nbPages, string $resume = "", string $uploader = "")
     {
         $this->id = $id;
         $this->titre = $titre;
         $this->image = $image;
-        $this->nombrePages = $nombrePages;
+        $this->nbPages = $nbPages;
         $this->resume = $resume;
         $this->uploader = $uploader;
     }
@@ -90,25 +90,25 @@ class Livre
     }
 
     /**
-     * Get the value of nombrePages
+     * Get the value of nbPages
      *
      * @return int
      */
-    public function getNombrePages(): int
+    public function getNbPages(): int
     {
-        return $this->nombrePages;
+        return $this->nbPages;
     }
 
     /**
-     * Set the value of nombrePages
+     * Set the value of nbPages
      *
-     * @param int $nombrePages
+     * @param int $nbPages
      *
      * @return self
      */
-    public function setNombrePages(int $nombrePages): self
+    public function setNbPages(int $nbPages): self
     {
-        $this->nombrePages = $nombrePages;
+        $this->nbPages = $nbPages;
         return $this;
     }
 
@@ -127,7 +127,32 @@ class Livre
      *
      * @return string
      */
-    public function getResume(): string {
+    public function getResume(): string
+    {
         return $this->resume;
+    }
+
+    /**
+     * Set the value of resume
+     *
+     * @param string $resume
+     *
+     * @return self
+     */
+    public function setResume(string $resume): self {
+        $this->resume = $resume;
+        return $this;
+    }
+
+    /**
+     * Set the value of uploader
+     *
+     * @param string $uploader
+     *
+     * @return self
+     */
+    public function setUploader(string $uploader): self {
+        $this->uploader = $uploader;
+        return $this;
     }
 }

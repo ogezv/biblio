@@ -4,7 +4,7 @@
     <fieldset>
         <div class="form-group">
             <label for="identifiant" class="form-label mt-4">Titre</label>
-            <input type="identifiant" class="form-control" name="titre" id="titre" aria-describedby="titreHelp" placeholder="Entrez votre titre">
+            <input type="text" class="form-control" name="titre" id="titre" aria-describedby="titreHelp" placeholder="Entrez votre titre">
         </div>
         <div class="form-group">
             <label for="nbePages" class="form-label mt-4">Nombre de pages</label>
@@ -13,6 +13,10 @@
         <div class="form-group">
             <label for="image" class="form-label mt-4">Votre image</label>
             <input type="file" class="form-control" name="image" id="image">
+        </div>
+        <div class="form-group">
+            <label for="resume" class="form-label mt-4">Résumé</label>
+            <textarea style="resize: none;" class="form-control" name="resume" id="resume" placeholder="Entrez votre résumé"></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary mt-4">Ajouter</button>

@@ -16,6 +16,20 @@ class LivresController
         }
     }
 
+    public function modifierLivre($id_livre)
+    {
+        $livre = $this->livresManager->getLivreById($id_livre);
+        require "views/livres/afficherModificationLivre.view.php";
+    }
+
+    public function supprimerLivre($id_livre)
+    {
+        $monImage = $this->livresManager->getLivreById($id_livre)->getImage();
+        unlink("public/images/" . $monImage);
+        $this->livresManager->supprimerLivreBdd($id_livre);
+        header('location:' . SITE_URL . 'livres');
+    }
+
     public function afficherLivres()
     {
         $livresEnCours = $this->livresManager->getLivres();
@@ -56,9 +70,25 @@ class LivresController
         $repertoire = "public/images/";
         $monImage = Utils::uploadFile($image, $repertoire);
         // envoie BDD
-        $this->livresManager->ajoutLivreBdd($_POST['titre'], intval($_POST['nbPages']), $monImage, $_SESSION['user']['id']);
+        $this->livresManager->ajoutLivreBdd($_POST['titre'], intval($_POST['nbPages']), $monImage, $_POST['resume'], $_SESSION['user']['id']);
         // appeler vue
         header('location: ' . SITE_URL . 'livres');
+    }
+
+    public function modifierLivreValidation()
+    {
+        $imageActuelle = $this->livresManager->getLivreById(intval($_POST['id_livre']))->getImage();
+        $file = $_FILES['image'];
+        if ($file['size'] > 0) {
+            unlink("public/images/" . $imageActuelle);
+            $repertoire = "public/images/";
+            $monImageToAdd = Utils::uploadFile($file, $repertoire);
+        } else {
+            $monImageToAdd = $imageActuelle;
+        }
+
+        $this->livresManager->modifierLivreBdd(intval($_POST['id_livre']), $_POST['titre'], intval($_POST['nbPages']), $monImageToAdd, $_POST['resume'], $_SESSION['user']['id']);
+        // header('location: ' . SITE_URL . 'livres');
     }
 
     // public function ajoutFile($file, $dir)

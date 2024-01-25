@@ -3,6 +3,7 @@
 
 <div class="card mb-3">
   <h3 class="card-header"<?= $livreEnCours->getTitre() ?>></h3>
+  <!-- <img src="<?= SITE_URL?>public/images/<?= $livreEnCours->getImage() ?>" alt="<?= $livreEnCours->getTitre()?>"> -->
   <img src="<?= SITE_URL?>public/images/<?= $livreEnCours->getImage() ?>" alt="<?= $livreEnCours->getTitre()?>">
   <div class="card-body">
     <p class="card-text"><?= $livreEnCours->getResume()?></p>

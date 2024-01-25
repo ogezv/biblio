@@ -1,4 +1,5 @@
 <?php
+
 if (!isset($_SESSION['user'])) header("location: connexion");
 ?>
 
@@ -11,14 +12,18 @@ if (!isset($_SESSION['user'])) header("location: connexion");
             <img src="public/images/<?= $livre->getImage() ?>" height="100px" alt="Livre pour <?php echo $livre->getTitre(); ?>">
             <div class=" card-body">
                 <div class="card-body">
-                    <p class="card-text"><?= $livre->getResume()?></p>
+                    <p class="card-text"><?= $livre->getResume() ?></p>
                 </div>
                 <div class="card-footer text-muted">
-                    Nombre de pages : <?= $livre->getNombrePages(); ?>
-                    <p class="card-text d-flex justify-content-evenly pt-3">
-                        <a href="<?= SITE_URL ?>livres/s" class="btn btn-danger">Supprimer</a>
-                        <a href="<?= SITE_URL ?>livres/m" class="btn btn-warning">Modifier</a>
-                    </p>
+                    Nombre de pages : <?= $livre->getNbPages(); ?>
+                    <div class="card-text d-flex justify-content-evenly pt-3">
+                        <form action="<?= SITE_URL ?>livres/m/<?= $livre->getId(); ?>" method="post" onsubmit="return confirm('Voulez-vous vraiment modifier le livre <?= $livre->getTitre(); ?>')">
+                            <button type="submit" class="btn btn-warning">Modifier</button>
+                        </form>
+                        <form action="<?= SITE_URL ?>livres/s/<?= $livre->getId(); ?>" method="post" onsubmit="return confirm('Voulez-vous vraiment supprimer le livre <?= $livre->getTitre(); ?>')">
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

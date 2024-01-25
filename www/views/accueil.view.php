@@ -14,7 +14,7 @@
                     <p class="card-text"><?= $livre->getResume() ?></p>
                 </div>
                 <div class="card-footer text-muted">
-                    Nombre de pages : <?= $livre->getNombrePages() ?>
+                    Nombre de pages : <?= $livre->getNbPages() ?>
                 </div>
             </div>
         </div>
